@@ -16,7 +16,7 @@ import { ProdutoRepository } from './produto.repository';
 
 @Controller('produtos')
 export class ProdutoController {
-  constructor(private readonly produtoRepository: ProdutoRepository) {}
+  constructor(private readonly produtoRepository: ProdutoRepository) { }
 
   @Post()
   async criaNovo(@Body() dadosProduto: CriaProdutoDTO) {
@@ -29,8 +29,8 @@ export class ProdutoController {
     produto.quantidade = dadosProduto.quantidade;
     produto.descricao = dadosProduto.descricao;
     produto.categoria = dadosProduto.categoria;
-    produto.caracteristicas = dadosProduto.caracteristicas;
-    produto.imagens = dadosProduto.imagens;
+    // produto.caracteristicas = dadosProduto.caracteristicas;
+    // produto.imagens = dadosProduto.imagens;
 
     const produtoCadastrado = this.produtoRepository.salva(produto);
     return produtoCadastrado;
