@@ -16,7 +16,7 @@ export class PostgresConfigService implements TypeOrmModule {
             password: this.configService.get<string>('DB_PASSWORD'),
             database: this.configService.get<string>('DB_NAME'),
             entities: [
-                __dirname + '/**/*.entity{.js,.ts}', //volta um diretorio / ** qualuer coisa que estiver dentro de src procure por /*.entity
+                __dirname + '/../**/*.entity{.js,.ts}', //volta um diretorio / ** qualuer coisa que estiver dentro de src procure por /*.entity
             ],
             synchronize: true
         }

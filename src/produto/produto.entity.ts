@@ -1,4 +1,6 @@
-import { PrimaryGeneratedColumn, Column, Entity, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm";
+import { PrimaryGeneratedColumn, Column, Entity, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from "typeorm";
+import { ProdutoImagemEntity } from "./produto-imagem.entity";
+import { ProdutoCaracteristicaEntity } from "./produto-caracteristica.entity";
 
 // class CaracteristicaProduto {
 //   nome: string;
@@ -42,6 +44,17 @@ export class ProdutoEntity {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: string;
 
-  // caracteristicas: CaracteristicaProduto[];
-  // imagens: ImagemProduto[];
+  @OneToMany(
+    () => ProdutoImagemEntity,
+    (produtoImagemEntity) => produtoImagemEntity.produto,
+    { cascade: true, eager: true },
+  )
+  imagens: ProdutoImagemEntity[];
+
+  @OneToMany(
+    () => ProdutoCaracteristicaEntity,
+    (produtoCaracteristicaEntity) => produtoCaracteristicaEntity.produto,
+    { cascade: true, eager: true }, //Eager ele sempre tras as caracteristicas do produto que esta em outra tabela
+  )
+  caracteristicas: ProdutoCaracteristicaEntity[];
 }
