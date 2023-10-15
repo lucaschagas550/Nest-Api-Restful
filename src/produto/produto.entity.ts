@@ -29,6 +29,9 @@ export class ProdutoEntity {
   @Column({ name: 'quantidade', nullable: false })
   quantidade: number;
 
+  @Column({ name: 'tem_em_estoque', nullable: false })
+  TemEmEstoque: boolean;
+
   @Column({ name: 'descricao', length: 255, nullable: false })
   descricao: string;
 

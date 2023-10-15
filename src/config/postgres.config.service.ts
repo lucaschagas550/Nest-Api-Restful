@@ -18,7 +18,7 @@ export class PostgresConfigService implements TypeOrmModule {
             entities: [
                 __dirname + '/../**/*.entity{.js,.ts}', //volta um diretorio / ** qualuer coisa que estiver dentro de src procure por /*.entity
             ],
-            synchronize: true
+            //synchronize: true //Cria as tabelas automatica, quando a api eh executada, recomendavel usar somente em ambiente de dev
         }
     }
 }
